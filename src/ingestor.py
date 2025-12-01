@@ -43,13 +43,14 @@ def on_message(ws, message):
                     
                     # 2. Event normalizer: Crear esquema compacto para el Decision Engine
                     event_data = {
-                        'ingest_time': ingest_time,
-                        'match_id': match_id,
-                        'scorer_team': scorer,
-                        'current_score': current_result,
-                        'home_team': home_team,
-                        'away_team': away_team
-                    }
+                            'ingest_time': ingest_time,
+                            'match_id': match_id,
+                            'scorer_team': scorer,
+                            'current_score': current_result,
+                            'home_team': home_team,
+                            'away_team': away_team,
+                            'minute': minute 
+            }
                     
                     # 3. Disparo del Decision Engine en un Hilo Separado (Paralelización)
                     threading.Thread(target=initiate_trading_sequence, args=(event_data,)).start()
